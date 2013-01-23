@@ -35,6 +35,8 @@ void testApp::setup()
     
     for (int i=0; i<COUNT; i++)
         m_pickConstraint[i] = NULL;
+    
+    keyPressed(' ');
 }
 
 //--------------------------------------------------------------
@@ -87,7 +89,7 @@ void testApp::draw()
 //--------------------------------------------------------------
 void testApp::drawFloor()
 {
-    ramBasicFloor(0);
+//    ramBasicFloor(0);
 }
 
 //--------------------------------------------------------------
