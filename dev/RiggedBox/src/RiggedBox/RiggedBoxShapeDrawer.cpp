@@ -18,6 +18,9 @@ subject to the following restrictions:
 #endif
 //#include "GLDebugFont.h"
 
+#include <gl/glew.h>
+#include "ofMain.h"
+
 #include <GLUT/GLUT.h>
 
 //#include "GlutStuff.h"
@@ -438,7 +441,7 @@ void RiggedBoxShapeDrawer::drawOpenGL(btScalar* m, const btCollisionShape* shape
 		return;
 	} 
 	else if((shape->getShapeType() == BOX_SHAPE_PROXYTYPE) && (debugMode & btIDebugDraw::DBG_FastWireframe))
-	{
+	{        
 		btVector3 org(m[12], m[13], m[14]);
 		btVector3 dx(m[0], m[1], m[2]);
 		btVector3 dy(m[4], m[5], m[6]);
@@ -597,6 +600,8 @@ void RiggedBoxShapeDrawer::drawOpenGL(btScalar* m, const btCollisionShape* shape
 
 				case BOX_SHAPE_PROXYTYPE:
 				{
+                    
+                    
 					const btBoxShape* boxShape = static_cast<const btBoxShape*>(shape);
 					btVector3 halfExtent = boxShape->getHalfExtentsWithMargin();
 					

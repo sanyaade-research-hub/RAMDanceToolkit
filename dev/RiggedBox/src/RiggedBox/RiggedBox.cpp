@@ -12,14 +12,14 @@
 
 #define CONSTRAINT_DEBUG_SIZE 0.2f
 
-#define R_LENGTH (150)
+#define R_LENGTH (130)
 
 const float RiggedBox::RAG_DALL_SCALE = 0.85f;
 
 btTransform RiggedBox::createBoxTransform(int i)
 {
-    const int R = 1.0f;
-    const int L = R_LENGTH/2.0f;
+    const float R = 0.7f;
+    const float L = R_LENGTH/2.0f;
     
     btTransform transform;
     transform.setIdentity();

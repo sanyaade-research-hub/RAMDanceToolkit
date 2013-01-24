@@ -122,6 +122,11 @@ protected:
 	btConstraintSolver      *m_solver;
     
 	btDefaultCollisionConfiguration *m_collisionConfiguration;
+    
+    struct MyInfo
+    {
+        bool isGround;
+    } m_groundInfo;
 };
 
 inline btAlignedObjectArray<class RiggedBox *> &RiggedBoxScene::getRiggedBoxes()

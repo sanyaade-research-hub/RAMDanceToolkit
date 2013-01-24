@@ -102,14 +102,14 @@ void testApp::drawActor(ramActor &actor)
 		float jointSize = (i==ramActor::JOINT_HEAD) ? 6.0 : 3.0;
 		
 		node.transformBegin();
-		ofSetColor( getRamColor(ramColor::BLUE_NORMAL) );
+		ofSetColor( getRamColor(ramColor::BLUE_LIGHT) );
         ofNoFill();
 		ofBox(jointSize);
 		node.transformEnd();
 		
 		if (node.hasParent())
 		{
-			ofSetColor(getRamColor(ramColor::RED_NORMAL));
+			ofSetColor(getRamColor(ramColor::RED_LIGHT));
 			ofLine(node, *node.getParent());
 		}
 	}

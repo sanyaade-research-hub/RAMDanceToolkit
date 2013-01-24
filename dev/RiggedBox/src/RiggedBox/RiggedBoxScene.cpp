@@ -111,6 +111,9 @@ void RiggedBoxScene::initPhysics()
 		btCollisionObject* fixedGround = new btCollisionObject();
 		fixedGround->setCollisionShape(groundShape);
 		fixedGround->setWorldTransform(groundTransform);
+        m_groundInfo.isGround = true;
+        fixedGround->setUserPointer(&m_groundInfo);
+        
 		m_dynamicsWorld->addCollisionObject(fixedGround);   
 	}
     
@@ -363,6 +366,12 @@ void RiggedBoxScene::renderscene(int pass)
 			else
 				wireColor += btVector3 (0.f,0.5f,0.f);
 		}
+        
+        if (colObj->getCollisionShape()->getShapeType() == BOX_SHAPE_PROXYTYPE) {
+            MyInfo *info = (MyInfo *)colObj->getUserPointer();
+            if (info && info->isGround)
+                wireColor = btVector3 (0.3f,0.3f,0.3f);
+        }
         
 		btVector3 aabbMin,aabbMax;
 		m_dynamicsWorld->getBroadphase()->getBroadphaseAabb(aabbMin,aabbMax);
