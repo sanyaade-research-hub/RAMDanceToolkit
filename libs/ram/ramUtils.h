@@ -226,3 +226,15 @@ public:
 		return positions;
 	}
 };
+
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+ 
+    void ramPushAll();
+    void ramPopAll();
+    
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
