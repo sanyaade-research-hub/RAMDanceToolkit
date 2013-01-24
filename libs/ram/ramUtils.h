@@ -262,3 +262,14 @@ static ofColor getRamColor(const int colorId)
 	}
 	return color;
 }
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+    
+    void ramPushAll();
+    void ramPopAll();
+    
+#ifdef __cplusplus
+}
+#endif

@@ -21,7 +21,7 @@ void ramBasicFloor(const int floorPattern,
 	ofPushMatrix();
     ofRotate( 90.0f, 1.0f, 0.0f, 0.0f );
 	
-	glEnable(GL_DEPTH_TEST);
+	//glEnable(GL_DEPTH_TEST);
 	
 	if (ofGetRectMode() != OF_RECTMODE_CENTER)
 	{
@@ -61,7 +61,7 @@ void ramBasicFloor(const int floorPattern,
 		}
 	}
 	
-	glDisable(GL_DEPTH_TEST);
+	//glDisable(GL_DEPTH_TEST);
 	ofPopMatrix();
 	ofPopStyle();
 }
