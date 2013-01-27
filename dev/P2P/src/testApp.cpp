@@ -32,22 +32,14 @@ void testApp::setup()
     
     m_picker.clear();
     
-    for (int i=0; i<scene.getP2Ps().size(); i++)
-        m_picker.push_back(btPicker());
-    
     for (int i=0; i<scene.getP2Ps().size(); i++) {
-        
-        for (int j=0; j<m_picker.size(); j++) {
-            
-//            cout << "i" << i << "j" << j << endl;
-            
-            m_picker[j].setWorld(scene.getDynamicsWorld());
-            
-            P2P p2p = scene.getP2Ps().at(i);
-            m_picker[j].attatchRigidBody(p2p.bodyB);
-        }
+        btPicker *picker = new btPicker;
+        picker->setWorld(scene.getDynamicsWorld());
+        picker->attatchRigidBody(scene.getP2Ps().at(i).bodyB);
+        m_picker.push_back(picker);
     }
     
+    bShowLine= false;
 }
 
 //--------------------------------------------------------------
@@ -60,34 +52,38 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
+    ofBackgroundGradient(ofColor(120), ofColor(60));
     
     //ofSetupScreen();
     ramPushAll();
     ramCameraBegin();
     scene.draw();
-    ramCameraEnd();
-    ramPopAll();
     
-    ramPushAll();
-    ramCameraBegin();
-    glEnable(GL_DEPTH_TEST);
-    glDisable(GL_LIGHTING);
-    {
+    ofDisableLighting();
+    ofSetColor(ramColor::GREEN_NORMAL);
+    for (int i=0; i<scene.getP2Ps().size(); i++) {
+
+        btVector3 posA = scene.getP2Ps().at(i).bodyA->getCenterOfMassPosition();
+        btVector3 posB = scene.getP2Ps().at(i).bodyB->getCenterOfMassPosition();
+
+        if (bShowLine)
+            ofLine(posA.x(), posA.y(), posA.z(), posB.x(), posB.y(), posB.z());
         
     }
-    glDisable(GL_DEPTH_TEST);
+    
+    
     ramCameraEnd();
     ramPopAll();
 }
-
-
-
 
 #pragma mark - ram methods
 //--------------------------------------------------------------
 void testApp::drawFloor()
 {
-    //    ramBasicFloor(ramFloor::FLOOR_CHECKER_PATTERN);
+    //ramPushAll();
+    //glEnable(GL_DEPTH_TEST);
+    //ramBasicFloor(ramFloor::FLOOR_CHECKER_PATTERN);
+    //ramPopAll();
 }
 
 //--------------------------------------------------------------
@@ -97,20 +93,18 @@ void testApp::drawActor(ramActor &actor)
     glEnable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
     
-    for (int i=0; i<actor.getNumNode(); i++)
-	{
+    for (int i=0; i<actor.getNumNode(); i++) {
 		ramNode &node = actor.getNode(i);
 		float jointSize = (i==ramActor::JOINT_HEAD) ? 6.0 : 3.0;
 		
 		node.transformBegin();
-		ofSetColor( getRamColor(ramColor::BLUE_NORMAL) );
+		ofSetColor(ramColor::BLUE_NORMAL);
         ofNoFill();
 		ofBox(jointSize);
 		node.transformEnd();
 		
-		if (node.hasParent())
-		{
-			ofSetColor(getRamColor(ramColor::RED_NORMAL));
+		if (node.hasParent()) {
+			ofSetColor(ramColor::RED_NORMAL);
 			ofLine(node, *node.getParent());
 		}
 	}
@@ -126,7 +120,7 @@ void testApp::drawActor(ramActor &actor)
                 break;
         }
         
-        m_picker[i].updatePosition(btVector3(pos.x, pos.y, pos.z));
+        m_picker.at(i)->updatePosition(btVector3(pos.x, pos.y, pos.z));
     }
     
     glDisable(GL_DEPTH_TEST);
@@ -138,4 +132,6 @@ void testApp::drawActor(ramActor &actor)
 void testApp::keyPressed(int key)
 {
     scene.keyPressed(key);
+    
+    if (key == 'l') bShowLine ^= true;
 }

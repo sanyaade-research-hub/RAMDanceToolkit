@@ -28,17 +28,12 @@ void btPicker::clear()
     if (m_pickConstraint && m_world)
     {
         m_world->removeConstraint(m_pickConstraint);
-        if (m_pickConstraint) {
-            delete m_pickConstraint;
-            m_pickConstraint = NULL;
-        }
+        delete m_pickConstraint;
+        m_pickConstraint = NULL;
         //printf("removed constraint %i",gPickingConstraintId);
-        
-        if (m_pickedBody) {
-            m_pickedBody->forceActivationState(ACTIVE_TAG);
-            m_pickedBody->setDeactivationTime( 0.f );
-            m_pickedBody = NULL;
-        }
+        m_pickedBody->forceActivationState(ACTIVE_TAG);
+        m_pickedBody->setDeactivationTime( 0.f );
+        m_pickedBody = NULL;
     }
 }
 

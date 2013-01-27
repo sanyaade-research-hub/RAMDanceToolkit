@@ -90,7 +90,8 @@ void RagdollScene::initPhysics()
 	m_solver = new btSequentialImpulseConstraintSolver;
     
 	m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher,m_broadphase,m_solver,m_collisionConfiguration);
-    m_dynamicsWorld->setGravity(btVector3(0.0f, -9.8f*GRAVITY_SCALE, 0.0f));
+    //m_dynamicsWorld->setGravity(btVector3(0.0f, -9.8f*GRAVITY_SCALE, 0.0f));
+    m_dynamicsWorld->setGravity(btVector3(0.0f, -9.8f*GRAVITY_SCALE*.166666667, 0.0f));
 	//m_dynamicsWorld->getDispatchInfo().m_useConvexConservativeDistanceUtil = true;
 	//m_dynamicsWorld->getDispatchInfo().m_convexConservativeDistanceThreshold = 0.01f;
     

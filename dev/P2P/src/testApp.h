@@ -28,5 +28,7 @@ public:
 	// ------------------------
 	ramOscReceiver oscReceiver;
     
-    vector<btPicker> m_picker;
+    vector<btPicker *> m_picker;
+    
+    bool bShowLine;
 };

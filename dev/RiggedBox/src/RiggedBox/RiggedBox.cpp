@@ -12,7 +12,7 @@
 
 #define CONSTRAINT_DEBUG_SIZE 0.2f
 
-#define R_LENGTH (130)
+#define R_LENGTH (140)
 
 const float RiggedBox::RAG_DALL_SCALE = 0.85f;
 

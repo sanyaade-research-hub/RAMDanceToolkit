@@ -107,14 +107,14 @@ void testApp::drawActor(ramActor &actor)
 		float jointSize = (i==ramActor::JOINT_HEAD) ? 6.0 : 3.0;
 		
 		node.transformBegin();
-		ofSetColor( getRamColor(ramColor::BLUE_NORMAL) );
+		ofSetColor(ramColor::BLUE_NORMAL);
         ofNoFill();
 		ofBox(jointSize);
 		node.transformEnd();
 		
 		if (node.hasParent())
 		{
-			ofSetColor(getRamColor(ramColor::RED_NORMAL));
+			ofSetColor(ramColor::RED_NORMAL);
 			ofLine(node, *node.getParent());
 		}
 		
@@ -139,7 +139,7 @@ void testApp::drawActor(ramActor &actor)
     ofVec3f vr = actor.getNode(ramActor::JOINT_RIGHT_HAND).getPosition();
     m_handPos[R].setValue(vr.x, vr.y, vr.z);
     
-    ofVec3f vh = actor.getNode(ramActor::JOINT_HEAD).getPosition();
+    ofVec3f vh = actor.getNode(ramActor::JOINT_LEFT_ANKLE).getPosition();
     m_handPos[H].setValue(vh.x, vh.y, vh.z);
     
     ofPopStyle();
@@ -208,7 +208,7 @@ void testApp::keyPressed(int key)
                             part = RagDoll::BODYPART_RIGHT_LOWER_ARM;
                             break;
                         case H:
-                            part = RagDoll::BODYPART_HEAD;
+                            part = RagDoll::BODYPART_PELVIS;
                             break;
 
                     }

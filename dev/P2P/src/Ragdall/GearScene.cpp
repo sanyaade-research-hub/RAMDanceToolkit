@@ -132,14 +132,14 @@ void GearScene::addP2P(const btVector3 &boxSizeA, const btVector3 &boxSizeB, con
     trans.setIdentity();
     trans.setOrigin(posA);
     mass = 1.0f;
-    btRigidBody* body0 = localCreateRigidBody( mass,trans,shapeA);
+    btRigidBody *body0 = localCreateRigidBody(mass,trans,shapeA);
     trans.setOrigin(posB);
     mass = 1.0f;
-    btRigidBody* body1 = localCreateRigidBody( mass,trans,shapeB);
+    btRigidBody *body1 = localCreateRigidBody(mass,trans,shapeB);
     btVector3 pivotInA = posA;
     btVector3 pivotInB = posB;
     // btTypedConstraint* p2p = new btPoint2PointConstraint(*body0,pivotInA);
-    btTypedConstraint* p2p = new btPoint2PointConstraint(*body0, *body1, pivotInA, pivotInB);
+    btTypedConstraint *p2p = new btPoint2PointConstraint(*body0, *body1, pivotInA, pivotInB);
     m_dynamicsWorld->addConstraint(p2p);
     // p2p ->setBreakingImpulseThreshold(100.0);
     //        p2p->setDbgDrawSize(btScalar(5.f));
@@ -161,13 +161,13 @@ void GearScene::initPhysics()
     //	m_dynamicsWorld->setDebugDrawer(&gDebugDrawer);
     
     
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(300.),btScalar(5.),btScalar(300.)));
+	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(3000.),btScalar(1000.),btScalar(3000.)));
 	//btCollisionShape* groundShape = new btStaticPlaneShape(btVector3(0,1,0),40);
     
 	m_collisionShapes.push_back(groundShape);
 	btTransform groundTransform;
 	groundTransform.setIdentity();
-	groundTransform.setOrigin(btVector3(0,-2.5,0));
+	groundTransform.setOrigin(btVector3(0,-1000.,0));
 	m_groundBody= localCreateRigidBody(0, groundTransform, groundShape);
     
 	btCollisionShape* shape = new btBoxShape(btVector3(CUBE_HALF_EXTENTS,CUBE_HALF_EXTENTS,CUBE_HALF_EXTENTS));

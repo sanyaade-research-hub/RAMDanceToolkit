@@ -50,14 +50,18 @@
 		9AA73DF1165B7E7D006FBD32 /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA73DEB165B7E7D006FBD32 /* tinyxmlparser.cpp */; };
 		9AA73DF2165B7E7D006FBD32 /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AA73DED165B7E7D006FBD32 /* ofxXmlSettings.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		D255D33116B1A48E003DAE12 /* BaseConstrains.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D255D32B16B1A48E003DAE12 /* BaseConstrains.cpp */; };
+		D255D33216B1A48E003DAE12 /* ConstrainsTestScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D255D32D16B1A48E003DAE12 /* ConstrainsTestScene.cpp */; };
+		D255D33316B1A48E003DAE12 /* TestShapeDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D255D32F16B1A48E003DAE12 /* TestShapeDrawer.cpp */; };
+		D25D5B2B16B41C6A004235FB /* Rail.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D25D5B2916B41C6A004235FB /* Rail.cpp */; };
 		D2B3E1EE16AEDA8B0099DC4A /* libBulletCollision.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B3E1DE16AEDA8B0099DC4A /* libBulletCollision.a */; };
 		D2B3E1EF16AEDA8B0099DC4A /* libBulletDynamics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B3E1DF16AEDA8B0099DC4A /* libBulletDynamics.a */; };
 		D2B3E1F016AEDA8B0099DC4A /* libBulletSoftBody.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B3E1E016AEDA8B0099DC4A /* libBulletSoftBody.a */; };
 		D2B3E1F116AEDA8B0099DC4A /* libLinearMath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B3E1E116AEDA8B0099DC4A /* libLinearMath.a */; };
 		D2B3E1F216AEDA8B0099DC4A /* ofxBt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3E1E416AEDA8B0099DC4A /* ofxBt.cpp */; };
-		D2B3E26616AFDA390099DC4A /* GearScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3E26216AFDA390099DC4A /* GearScene.cpp */; };
-		D2B3E26716AFDA390099DC4A /* GearShapeDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2B3E26416AFDA390099DC4A /* GearShapeDrawer.cpp */; };
-		D2C13DA216B1667D00BFE847 /* btPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2C13DA016B1667D00BFE847 /* btPicker.cpp */; };
+		D2C13D9816B165C700BFE847 /* btPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2C13D9616B165C700BFE847 /* btPicker.cpp */; };
+		D2DD309D16B2DEF200D86CF2 /* RiggedBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD309B16B2DEF200D86CF2 /* RiggedBox.cpp */; };
+		D2DD30A516B2E5E000D86CF2 /* Chain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D2DD30A316B2E5DF00D86CF2 /* Chain.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -214,6 +218,14 @@
 		9bf3aa0d4faa89d0f8a0e545403162be /* OscReceivedElements.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = OscReceivedElements.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/osc/OscReceivedElements.cpp; sourceTree = SOURCE_ROOT; };
 		9f7986dc4eb05e75fce2c777500fdc01 /* ofxOscSender.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOscSender.h; path = ../../../addons/ofxOsc/src/ofxOscSender.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		D255D32B16B1A48E003DAE12 /* BaseConstrains.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseConstrains.cpp; sourceTree = "<group>"; };
+		D255D32C16B1A48E003DAE12 /* BaseConstrains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseConstrains.h; sourceTree = "<group>"; };
+		D255D32D16B1A48E003DAE12 /* ConstrainsTestScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConstrainsTestScene.cpp; sourceTree = "<group>"; };
+		D255D32E16B1A48E003DAE12 /* ConstrainsTestScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstrainsTestScene.h; sourceTree = "<group>"; };
+		D255D32F16B1A48E003DAE12 /* TestShapeDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestShapeDrawer.cpp; sourceTree = "<group>"; };
+		D255D33016B1A48E003DAE12 /* TestShapeDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShapeDrawer.h; sourceTree = "<group>"; };
+		D25D5B2916B41C6A004235FB /* Rail.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rail.cpp; sourceTree = "<group>"; };
+		D25D5B2A16B41C6A004235FB /* Rail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rail.h; sourceTree = "<group>"; };
 		D2B3E11316AEDA8B0099DC4A /* COPYING */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
 		D2B3E11616AEDA8B0099DC4A /* btBulletCollisionCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btBulletCollisionCommon.h; sourceTree = "<group>"; };
 		D2B3E11716AEDA8B0099DC4A /* btBulletDynamicsCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btBulletDynamicsCommon.h; sourceTree = "<group>"; };
@@ -408,12 +420,12 @@
 		D2B3E1E416AEDA8B0099DC4A /* ofxBt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBt.cpp; sourceTree = "<group>"; };
 		D2B3E1E516AEDA8B0099DC4A /* ofxBt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBt.h; sourceTree = "<group>"; };
 		D2B3E1E616AEDA8B0099DC4A /* ofxBtHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBtHelper.h; sourceTree = "<group>"; };
-		D2B3E26216AFDA390099DC4A /* GearScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GearScene.cpp; path = src/Ragdall/GearScene.cpp; sourceTree = SOURCE_ROOT; };
-		D2B3E26316AFDA390099DC4A /* GearScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GearScene.h; path = src/Ragdall/GearScene.h; sourceTree = SOURCE_ROOT; };
-		D2B3E26416AFDA390099DC4A /* GearShapeDrawer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GearShapeDrawer.cpp; path = src/Ragdall/GearShapeDrawer.cpp; sourceTree = SOURCE_ROOT; };
-		D2B3E26516AFDA390099DC4A /* GearShapeDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GearShapeDrawer.h; path = src/Ragdall/GearShapeDrawer.h; sourceTree = SOURCE_ROOT; };
-		D2C13DA016B1667D00BFE847 /* btPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = btPicker.cpp; sourceTree = "<group>"; };
-		D2C13DA116B1667D00BFE847 /* btPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btPicker.h; sourceTree = "<group>"; };
+		D2C13D9616B165C700BFE847 /* btPicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = btPicker.cpp; sourceTree = "<group>"; };
+		D2C13D9716B165C700BFE847 /* btPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btPicker.h; sourceTree = "<group>"; };
+		D2DD309B16B2DEF200D86CF2 /* RiggedBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RiggedBox.cpp; sourceTree = "<group>"; };
+		D2DD309C16B2DEF200D86CF2 /* RiggedBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiggedBox.h; sourceTree = "<group>"; };
+		D2DD30A316B2E5DF00D86CF2 /* Chain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chain.cpp; sourceTree = "<group>"; };
+		D2DD30A416B2E5E000D86CF2 /* Chain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chain.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -424,7 +436,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* ramDanceToolKitRCDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ramDanceToolKitRCDebug.app; path = P2PDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* ConstrainTestDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstrainTestDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -688,6 +700,26 @@
 				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
 			);
 			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		D255D32A16B1A48E003DAE12 /* Constrains */ = {
+			isa = PBXGroup;
+			children = (
+				D255D32B16B1A48E003DAE12 /* BaseConstrains.cpp */,
+				D255D32C16B1A48E003DAE12 /* BaseConstrains.h */,
+				D2DD309B16B2DEF200D86CF2 /* RiggedBox.cpp */,
+				D2DD309C16B2DEF200D86CF2 /* RiggedBox.h */,
+				D2DD30A316B2E5DF00D86CF2 /* Chain.cpp */,
+				D2DD30A416B2E5E000D86CF2 /* Chain.h */,
+				D25D5B2916B41C6A004235FB /* Rail.cpp */,
+				D25D5B2A16B41C6A004235FB /* Rail.h */,
+				D255D32D16B1A48E003DAE12 /* ConstrainsTestScene.cpp */,
+				D255D32E16B1A48E003DAE12 /* ConstrainsTestScene.h */,
+				D255D32F16B1A48E003DAE12 /* TestShapeDrawer.cpp */,
+				D255D33016B1A48E003DAE12 /* TestShapeDrawer.h */,
+			);
+			name = Constrains;
+			path = RiggedBox;
 			sourceTree = "<group>";
 		};
 		D2B3E10116AEDA8B0099DC4A /* ofxBt */ = {
@@ -1052,18 +1084,6 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		D2B3E23416AEDDCB0099DC4A /* Ragdall */ = {
-			isa = PBXGroup;
-			children = (
-				D2B3E26216AFDA390099DC4A /* GearScene.cpp */,
-				D2B3E26316AFDA390099DC4A /* GearScene.h */,
-				D2B3E26416AFDA390099DC4A /* GearShapeDrawer.cpp */,
-				D2B3E26516AFDA390099DC4A /* GearShapeDrawer.h */,
-			);
-			name = Ragdall;
-			path = OpenGL;
-			sourceTree = "<group>";
-		};
 		E4328144138ABC890047C5CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1091,19 +1111,19 @@
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* ramDanceToolKitRCDebug.app */,
+				E4B69B5B0A3A1756003C02F2 /* ConstrainTestDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				D2B3E23416AEDDCB0099DC4A /* Ragdall */,
+				D255D32A16B1A48E003DAE12 /* Constrains */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
-				D2C13DA016B1667D00BFE847 /* btPicker.cpp */,
-				D2C13DA116B1667D00BFE847 /* btPicker.h */,
+				D2C13D9616B165C700BFE847 /* btPicker.cpp */,
+				D2C13D9716B165C700BFE847 /* btPicker.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1179,9 +1199,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E4B69B5A0A3A1756003C02F2 /* P2P */ = {
+		E4B69B5A0A3A1756003C02F2 /* ConstrainTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "P2P" */;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "ConstrainTest" */;
 			buildPhases = (
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
@@ -1194,9 +1214,9 @@
 				6019005B1644E337001930AA /* PBXTargetDependency */,
 				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
 			);
-			name = P2P;
+			name = ConstrainTest;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* ramDanceToolKitRCDebug.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* ConstrainTestDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1207,7 +1227,7 @@
 			attributes = {
 				LastUpgradeCheck = 0450;
 			};
-			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "P2P" */;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ConstrainTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1232,7 +1252,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				E4B69B5A0A3A1756003C02F2 /* P2P */,
+				E4B69B5A0A3A1756003C02F2 /* ConstrainTest */,
 			);
 		};
 /* End PBXProject section */
@@ -1322,9 +1342,13 @@
 				9AA2612816AAD5B700993CAA /* simpleFileLister.cpp in Sources */,
 				9AA2612916AAD5B700993CAA /* simpleLogger.cpp in Sources */,
 				D2B3E1F216AEDA8B0099DC4A /* ofxBt.cpp in Sources */,
-				D2B3E26616AFDA390099DC4A /* GearScene.cpp in Sources */,
-				D2B3E26716AFDA390099DC4A /* GearShapeDrawer.cpp in Sources */,
-				D2C13DA216B1667D00BFE847 /* btPicker.cpp in Sources */,
+				D2C13D9816B165C700BFE847 /* btPicker.cpp in Sources */,
+				D255D33116B1A48E003DAE12 /* BaseConstrains.cpp in Sources */,
+				D255D33216B1A48E003DAE12 /* ConstrainsTestScene.cpp in Sources */,
+				D255D33316B1A48E003DAE12 /* TestShapeDrawer.cpp in Sources */,
+				D2DD309D16B2DEF200D86CF2 /* RiggedBox.cpp in Sources */,
+				D2DD30A516B2E5E000D86CF2 /* Chain.cpp in Sources */,
+				D25D5B2B16B41C6A004235FB /* Rail.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,7 +1388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1397,7 +1421,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1424,6 +1448,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CHAIN_MODE=1",
+					"RAIL_MODE=0",
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1511,6 +1539,10 @@
 				GCC_MODEL_TUNING = NONE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"CHAIN_MODE=1",
+					"RAIL_MODE=0",
+				);
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
@@ -1587,7 +1619,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "P2P" */ = {
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "ConstrainTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B4E0A3A1720003C02F2 /* Debug */,
@@ -1596,7 +1628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "P2P" */ = {
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "ConstrainTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E4B69B600A3A1757003C02F2 /* Debug */,

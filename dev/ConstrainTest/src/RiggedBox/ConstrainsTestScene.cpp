@@ -31,7 +31,7 @@
  Written by: Marten Svanfeldt
  */
 
-#include "RiggedBoxScene.h"
+#include "ConstrainsTestScene.h"
 #include "LinearMath/btIDebugDraw.h"
 #include "BulletDynamics/Dynamics/btDynamicsWorld.h"
 
@@ -44,7 +44,7 @@
 #include "BulletCollision/CollisionShapes/btCompoundShape.h"
 #include "BulletCollision/CollisionShapes/btUniformScalingShape.h"
 #include "BulletDynamics/ConstraintSolver/btConstraintSolver.h"
-#include "RiggedBoxShapeDrawer.h"
+#include "TestShapeDrawer.h"
 #include "LinearMath/btQuickprof.h"
 #include "LinearMath/btDefaultMotionState.h"
 #include "LinearMath/btSerializer.h"
@@ -53,6 +53,11 @@
 #include "LinearMath/btIDebugDraw.h"
 
 #include "RiggedBox.h"
+#include "Chain.h"
+#include "Rail.h"
+
+#include <gl/glew.h>
+#include "ramMain.h"
 
 #include <GLUT/GLUT.h>
 
@@ -76,7 +81,7 @@ static const float GRAVITY_SCALE = 100.0f;
 
 
 
-void RiggedBoxScene::initPhysics()
+void ConstrainsTestScene::initPhysics()
 {
 	// Setup the basic world
 	m_collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -90,23 +95,27 @@ void RiggedBoxScene::initPhysics()
 	m_solver = new btSequentialImpulseConstraintSolver;
     
 	m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher,m_broadphase,m_solver,m_collisionConfiguration);
-    m_dynamicsWorld->setGravity(btVector3(0.0f, -9.8f*GRAVITY_SCALE, 0.0f));
+    //m_dynamicsWorld->setGravity(btVector3(0.0f, -9.8f*GRAVITY_SCALE, 0.0f));
+    //m_dynamicsWorld->setGravity(btVector3(0.0f, 0.1f*GRAVITY_SCALE, 0.0f));
+    //m_dynamicsWorld->setGravity(btVector3(0.0f, -3.0f*GRAVITY_SCALE, 0.0f));
+    m_dynamicsWorld->setGravity(btVector3(0.0f, 0.00f*GRAVITY_SCALE, 0.0f));
 	//m_dynamicsWorld->getDispatchInfo().m_useConvexConservativeDistanceUtil = true;
 	//m_dynamicsWorld->getDispatchInfo().m_convexConservativeDistanceThreshold = 0.01f;
     
 
 	// Setup a big ground box
+#if CHAIN_MODE
 	{
 		//btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(1.5),btScalar(0.1),btScalar(1.5)));
         
-		btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(600.0f),
-                                                                 btScalar(10.0f),
-                                                                 btScalar(600.0f)));
+		btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(3000.0f),
+                                                                 btScalar(600.0f),
+                                                                 btScalar(3000.0f)));
         m_collisionShapes.push_back(groundShape);
 		btTransform groundTransform;
 		groundTransform.setIdentity();
 		//groundTransform.setOrigin(btVector3(0,-10,0));
-        groundTransform.setOrigin(btVector3(0,-5.0f,0));
+        groundTransform.setOrigin(btVector3(0,-600.0f,0));
         
 		btCollisionObject* fixedGround = new btCollisionObject();
 		fixedGround->setCollisionShape(groundShape);
@@ -114,22 +123,36 @@ void RiggedBoxScene::initPhysics()
         m_groundInfo.isGround = true;
         fixedGround->setUserPointer(&m_groundInfo);
         
-		m_dynamicsWorld->addCollisionObject(fixedGround);   
+		m_dynamicsWorld->addCollisionObject(fixedGround);
 	}
+#endif
     
 	// Spawn one ragdoll
-	btVector3 startOffset(0,500,0);
-	spawnRiggedBox(startOffset);
+#if CHAIN_MODE
+    btVector3 startOffset(0,100,0);
+#else
+	btVector3 startOffset(0,-200,0);
+#endif
+    
+	spawnConstrains(startOffset);
 	clientResetScene();
 }
 
-void RiggedBoxScene::spawnRiggedBox(const btVector3& startOffset)
+void ConstrainsTestScene::spawnConstrains(const btVector3& startOffset)
 {
-	RiggedBox* ragDoll = new RiggedBox (m_dynamicsWorld, startOffset);
-	m_boxes.push_back(ragDoll);
+#if CHAIN_MODE
+    BaseConstrains *c0 = new Chain(m_dynamicsWorld, startOffset);
+    m_constrains.push_back(c0);
+#endif
+    
+#if RAIL_MODE
+    BaseConstrains *c1 = new Rail(m_dynamicsWorld, startOffset);
+    m_constrains.push_back(c1);
+#endif
+    //BaseConstrains *c = new RiggedBox(m_dynamicsWorld, startOffset);
 }
 
-void RiggedBoxScene::update()
+void ConstrainsTestScene::update()
 {
 	//simple dynamics world doesn't handle fixed-time-stepping
 	float ms = getDeltaTimeMicroseconds();
@@ -142,7 +165,7 @@ void RiggedBoxScene::update()
 		m_dynamicsWorld->stepSimulation(ms / 1000000.f);
 }
 
-void RiggedBoxScene::draw()
+void ConstrainsTestScene::draw()
 {
     GLfloat light_ambient[] = { btScalar(0.2), btScalar(0.2), btScalar(0.2), btScalar(1.0) };
 	GLfloat light_diffuse[] = { btScalar(1.0), btScalar(1.0), btScalar(1.0), btScalar(1.0) };
@@ -212,23 +235,33 @@ void RiggedBoxScene::draw()
         
 		glDisable(GL_LIGHTING);
 	}
+    
+    ramPushAll();
+    ofSetColor(ramColor::BLUE_LIGHT);
+    glDisable(GL_LIGHTING);
+    for (int i=0; i<m_constrains.size(); i++) {
+        m_constrains.at(i)->draw();
+    }
+    ramPopAll();
+    
 }
 
-void RiggedBoxScene::keyPressed(int key)
+void ConstrainsTestScene::keyPressed(int key)
 {
 	switch (key) {
         case 'e': {
-            btVector3 startOffset(ofRandom(-295,295),ofRandom(100, 500),ofRandom(-295,295));
-            spawnRiggedBox(startOffset);
+//            btVector3 startOffset(ofRandom(-295,295),ofRandom(100, 500),ofRandom(-295,295));
+//            spawnConstrains(startOffset);
         }
     }
 }
 
-void RiggedBoxScene::exitPhysics()
+void ConstrainsTestScene::exitPhysics()
 {
-	for (int i=0;i<m_boxes.size();i++) {
-		RiggedBox* doll = m_boxes[i];
-		delete doll;
+	for (int i=0;i<m_constrains.size();i++) {
+		BaseConstrains* consts = m_constrains[i];
+		delete consts;
+        consts = NULL;
 	}
     
 	//cleanup in the reverse order of creation/initialization
@@ -240,30 +273,33 @@ void RiggedBoxScene::exitPhysics()
 		btRigidBody* body = btRigidBody::upcast(obj);
 		if (body && body->getMotionState()) {
 			delete body->getMotionState();
+            body->setMotionState(NULL);
 		}
 		m_dynamicsWorld->removeCollisionObject( obj );
 		delete obj;
+        obj = NULL;
 	}
     
 	//delete collision shapes
 	for (int j=0;j<m_collisionShapes.size();j++) {
 		btCollisionShape* shape = m_collisionShapes[j];
 		delete shape;
+        shape = NULL;
 	}
     
 	//delete dynamics world
-	delete m_dynamicsWorld;
+	delete m_dynamicsWorld; m_dynamicsWorld = NULL;
     
 	//delete solver
-	delete m_solver;
+	delete m_solver; m_solver = NULL;
     
 	//delete broadphase
-	delete m_broadphase;
+	delete m_broadphase; m_broadphase = NULL;
     
 	//delete dispatcher
-	delete m_dispatcher;
+	delete m_dispatcher; m_dispatcher = NULL;
     
-	delete m_collisionConfiguration;
+	delete m_collisionConfiguration; m_collisionConfiguration = NULL;
 }
 
 /// Basic staffs
@@ -271,7 +307,7 @@ const int maxNumObjects = 16384;
 btTransform startTransforms[maxNumObjects];
 btCollisionShape* gShapePtr[maxNumObjects];//1 rigidbody has 1 shape (no re-use of shapes)
 
-RiggedBoxScene::RiggedBoxScene()
+ConstrainsTestScene::ConstrainsTestScene()
 //see btIDebugDraw.h for modes
 :
 m_dynamicsWorld(0),
@@ -283,11 +319,11 @@ m_enableshadows(true),
 m_sundirection(btVector3(1,-2,1)*1000),
 m_defaultContactProcessingThreshold(BT_LARGE_FLOAT)
 {
-	m_shapeDrawer = new RiggedBoxShapeDrawer();
+	m_shapeDrawer = new TestShapeDrawer();
 	m_shapeDrawer->enableTexture(true);
 }
 
-RiggedBoxScene::~RiggedBoxScene()
+ConstrainsTestScene::~ConstrainsTestScene()
 {
     exitPhysics();
     
@@ -295,7 +331,7 @@ RiggedBoxScene::~RiggedBoxScene()
 		delete m_shapeDrawer;
 }
 
-void RiggedBoxScene::setup(void)
+void ConstrainsTestScene::setup(void)
 {    
     initPhysics();
 }
@@ -303,7 +339,7 @@ void RiggedBoxScene::setup(void)
 
 //#define NUM_SPHERES_ON_DIAGONAL 9
 
-btRigidBody* RiggedBoxScene::localCreateRigidBody(float mass,
+btRigidBody* ConstrainsTestScene::localCreateRigidBody(float mass,
                                                    const btTransform& startTransform,
                                                    btCollisionShape* shape)
 {
@@ -331,7 +367,7 @@ btRigidBody* RiggedBoxScene::localCreateRigidBody(float mass,
 }
 
 //
-void RiggedBoxScene::renderscene(int pass)
+void ConstrainsTestScene::renderscene(int pass)
 {
 	btScalar	m[16];
 	btMatrix3x3	rot;rot.setIdentity();
@@ -396,7 +432,7 @@ void RiggedBoxScene::renderscene(int pass)
 #include "BulletCollision/BroadphaseCollision/btAxisSweep3.h"
 
 
-void RiggedBoxScene::clientResetScene()
+void ConstrainsTestScene::clientResetScene()
 {
 	int numObjects = 0;
     
